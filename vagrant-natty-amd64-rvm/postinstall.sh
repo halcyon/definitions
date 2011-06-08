@@ -51,6 +51,8 @@ sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
+echo -e "MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=" | openssl enc -base64 -d >> /etc/hosts
+
 mkdir -p /etc/chef
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
 chmod 0400 /etc/chef/encrypted_data_bag_secret
