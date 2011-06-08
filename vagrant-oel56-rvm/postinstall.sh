@@ -68,8 +68,6 @@ echo 'HOSTNAME=vagrant-oel56-amd64' >> /etc/sysconfig/network
 
 sed -i '$d' /etc/hosts
 
-echo -e "MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=" | openssl enc -base64 -d >> /etc/hosts
-
 mkdir -p /etc/chef
 wget --no-check-certificate 'http://github.com/mitchellh/vagrant/raw/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
 chmod 0400 /etc/chef/encrypted_data_bag_secret
