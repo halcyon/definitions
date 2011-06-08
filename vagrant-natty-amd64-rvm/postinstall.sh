@@ -7,7 +7,6 @@ apt-add-repository ppa:git-core/ppa
 aptitude -y update
 aptitude -y upgrade
 
-aptitude -y remove apparmor
 aptitude -y install linux-headers-$(uname -r)
 
 aptitude -y install build-essential bison openssl libreadline6
@@ -40,20 +39,20 @@ bash -l -c "gem install chef puppet"
 mkdir /home/vagrant/.ssh
 chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
-wget --no-check-certificate 'http://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub' -O authorized_keys
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O authorized_keys
 chown -R vagrant /home/vagrant/.ssh
 
 #Installing the virtualbox guest additions
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
-aptitude purge -y virtualbox-ose-guest-dkms
-aptitude purge -y virtualbox-ose-guest-utils
-aptitude purge -y virtualbox-ose-guest-x11
 cd /tmp
 wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
 mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
-
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
+
+mkdir -p /etc/chef
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
+chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 exit
