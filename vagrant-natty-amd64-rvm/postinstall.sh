@@ -7,7 +7,7 @@ apt-add-repository ppa:git-core/ppa
 aptitude -y update
 aptitude -y upgrade
 
-aptitude -y install linux-headers-$(uname -r)
+aptitude -y install linux-headers
 
 aptitude -y install build-essential bison openssl libreadline6
 aptitude -y install libreadline6-dev curl git-core zlib1g zlib1g-dev
