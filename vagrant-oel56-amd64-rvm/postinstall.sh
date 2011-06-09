@@ -1,3 +1,7 @@
+#Invoked using Bourne shell
+
+echo "$Id$" > /etc/basebox_version
+
 cat > /etc/yum.repos.d/public-yum.repo <<-EOF
 	[ol5_u6_base]
 	name=Oracle Linux 5 - U6 - x86_64 - base
