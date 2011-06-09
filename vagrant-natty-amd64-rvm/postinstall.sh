@@ -1,5 +1,7 @@
 #Invoked using Bourne shell
 
+echo "$Id$" > /etc/basebox_version
+
 #Updating the box
 aptitude -y install python-software-properties
 apt-add-repository ppa:git-core/ppa
