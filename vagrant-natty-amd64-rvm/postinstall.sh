@@ -41,6 +41,9 @@ chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O authorized_keys
 chown -R vagrant /home/vagrant/.ssh
+mkdir -p /etc/chef
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
+chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 #Installing the virtualbox guest additions
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
@@ -50,9 +53,5 @@ mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
 sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
-
-mkdir -p /etc/chef
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
-chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 exit
