@@ -1,6 +1,6 @@
 #Invoked using Bourne shell
 
-echo "$Head$" > /etc/basebox_version
+echo "$Rev$" > /etc/basebox_version
 
 cat > /etc/yum.repos.d/public-yum.repo <<-EOF
 	[ol5_u6_base]

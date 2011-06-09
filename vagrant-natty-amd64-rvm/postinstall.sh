@@ -1,6 +1,6 @@
 #Invoked using Bourne shell
 
-echo "$Head$" > /etc/basebox_version
+echo "$Rev$" > /etc/basebox_version
 
 #Updating the box
 aptitude -y install python-software-properties
