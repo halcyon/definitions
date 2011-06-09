@@ -75,6 +75,6 @@ echo 'HOSTNAME=vagrant-oel56-amd64' >> /etc/sysconfig/network
 
 sed -i '$d' /etc/hosts
 
-echo -e "MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=" | openssl enc -base64 -d >> /etc/hosts
+echo 'MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=' | openssl enc -base64 -d >> /etc/hosts
 
 exit

@@ -56,6 +56,6 @@ sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
-echo -e "MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=" | openssl enc -base64 -d >> /etc/hosts
+echo 'MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=' | openssl enc -base64 -d >> /etc/hosts
 
 exit
