@@ -49,6 +49,9 @@ chmod 700 /home/vagrant/.ssh
 cd /home/vagrant/.ssh
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O authorized_keys
 chown -R vagrant /home/vagrant/.ssh
+mkdir -p /etc/chef
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
+chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
 #Installing the virtualbox guest additions
@@ -69,9 +72,5 @@ echo 'HOSTNAME=vagrant-oel56-amd64' >> /etc/sysconfig/network
 sed -i '$d' /etc/hosts
 
 echo -e "MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=" | openssl enc -base64 -d >> /etc/hosts
-
-mkdir -p /etc/chef
-wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
-chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 exit
