@@ -2,6 +2,13 @@
 
 echo '$Rev$' > /etc/basebox_version
 
+cat >> /etc/apt/sources.list <<-EOF
+	
+	deb http://http.us.debian.org/debian squeeze main
+	deb-src http://http.us.debian.org/debian squeeze main
+EOF
+aptitude update
+aptitude install -y libssl0.9.8=0.9.8o-4squeeze1 libssl-dev=0.9.8o-4squeeze1
 aptitude clean
 
 #Installing RVM
