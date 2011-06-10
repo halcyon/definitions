@@ -2,6 +2,9 @@
 
 echo '$Rev$' > /etc/basebox_version
 
+sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+echo "Defaults always_set_home" >> /etc/sudoers
+
 cat >> /etc/apt/sources.list <<-EOF
 	
 	deb http://http.us.debian.org/debian squeeze main
