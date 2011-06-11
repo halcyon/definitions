@@ -75,8 +75,6 @@ echo "Defaults always_set_home" >> /etc/sudoers
 sed -i '/HOSTNAME/d' /etc/sysconfig/network
 echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 
-#sed -i '$d' /etc/hosts
-
 echo 'MTAuMy4xMDIuOTUJCXplZGR3b3Jrcy5jb20K' | openssl enc -base64 -d >> /etc/hosts
 
 cat >> /etc/hosts <<-EOF
