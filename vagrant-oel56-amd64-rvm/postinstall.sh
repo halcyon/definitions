@@ -78,7 +78,7 @@ echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 #sed -i '$d' /etc/hosts
 
 cat >> /etc/hosts <<-EOF
-  10.0.2.15   $HOSTNAME
+	10.0.2.15	$HOSTNAME
 EOF
 
 exit
