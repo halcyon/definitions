@@ -1,5 +1,7 @@
 #Invoked using Bourne shell
 
+HOSTNAME="vagrant-oel56-amd64"
+
 echo '$Rev$' > /etc/basebox_version
 
 cat > /etc/yum.repos.d/public-yum.repo <<-EOF
@@ -71,8 +73,12 @@ sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 echo "Defaults always_set_home" >> /etc/sudoers
 
 sed -i '/HOSTNAME/d' /etc/sysconfig/network
-echo 'HOSTNAME=vagrant-oel56-amd64' >> /etc/sysconfig/network
+echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 
-sed -i '$d' /etc/hosts
+#sed -i '$d' /etc/hosts
+
+cat >> /etc/hosts <<-EOF
+  10.0.2.15   $HOSTNAME
+EOF
 
 exit
