@@ -3,21 +3,7 @@
 echo '$Rev$' > /etc/basebox_version
 
 #Setting up sudo
-cp /etc/sudoers /etc/sudoers.orig
-sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-
-#/etc/sudoers.d/vagrant
-#sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
-#echo "Defaults always_set_home" >> /etc/sudoers
-
-#cat >> /etc/apt/sources.list <<-EOF
-#	
-#	deb http://http.us.debian.org/debian squeeze main
-#	deb-src http://http.us.debian.org/debian squeeze main
-#EOF
-#aptitude update
-#aptitude install -y libssl0.9.8=0.9.8o-4squeeze1 libssl-dev=0.9.8o-4squeeze1
-#aptitude clean
+sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo	ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 
 #Installing RVM
 REE=ree-1.8.7-2011.03
@@ -37,16 +23,6 @@ chown -R vagrant /home/vagrant/.ssh
 mkdir -p /etc/chef
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant' -O /etc/chef/encrypted_data_bag_secret
 chmod 0400 /etc/chef/encrypted_data_bag_secret
-
-#Installing the virtualbox guest additions
-#Commented out because Debian Sid provides packaged versions of these that are CURRENT
-#VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
-#cd /tmp
-#wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
-#mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
-#sh /mnt/VBoxLinuxAdditions.run
-#umount /mnt
-#rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
 echo 'MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=' | openssl enc -base64 -d >> /etc/hosts
 
