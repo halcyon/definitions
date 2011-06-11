@@ -2,17 +2,22 @@
 
 echo '$Rev$' > /etc/basebox_version
 
-sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
-echo "Defaults always_set_home" >> /etc/sudoers
+#Setting up sudo
+cp /etc/sudoers /etc/sudoers.orig
+sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 
-cat >> /etc/apt/sources.list <<-EOF
-	
-	deb http://http.us.debian.org/debian squeeze main
-	deb-src http://http.us.debian.org/debian squeeze main
-EOF
-aptitude update
-aptitude install -y libssl0.9.8=0.9.8o-4squeeze1 libssl-dev=0.9.8o-4squeeze1
-aptitude clean
+#/etc/sudoers.d/vagrant
+#sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+#echo "Defaults always_set_home" >> /etc/sudoers
+
+#cat >> /etc/apt/sources.list <<-EOF
+#	
+#	deb http://http.us.debian.org/debian squeeze main
+#	deb-src http://http.us.debian.org/debian squeeze main
+#EOF
+#aptitude update
+#aptitude install -y libssl0.9.8=0.9.8o-4squeeze1 libssl-dev=0.9.8o-4squeeze1
+#aptitude clean
 
 #Installing RVM
 REE=ree-1.8.7-2011.03
