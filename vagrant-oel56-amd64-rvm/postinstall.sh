@@ -75,8 +75,6 @@ echo "Defaults always_set_home" >> /etc/sudoers
 sed -i '/HOSTNAME/d' /etc/sysconfig/network
 echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 
-#sed -i '$d' /etc/hosts
-
 cat >> /etc/hosts <<-EOF
 	10.0.2.15		$HOSTNAME
 EOF
