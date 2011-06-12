@@ -57,5 +57,3 @@ umount /mnt
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
 echo 'MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=' | openssl enc -base64 -d >> /etc/hosts
-
-exit
