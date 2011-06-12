@@ -2,6 +2,16 @@
 
 echo '$Rev$' > /etc/basebox_version
 
+libssl="libssl0.9.8_0.9.8o-4squeeze1_amd64.deb"
+libssl-dev="libssl-dev_0.9.8o-4squeeze1_amd64.deb"
+wget http://http.us.debian.org/debian/pool/main/o/openssl/$libssl
+wget http://http.us.debian.org/debian/pool/main/o/openssl/$libssl-dev
+dpkg -i $libssl
+dpkg -i $libssl-dev
+rm $libssl
+rm $libssl-dev
+aptitude hold libssl-dev libssl0.9.8
+
 #Setting up sudo
 sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo	ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
 
