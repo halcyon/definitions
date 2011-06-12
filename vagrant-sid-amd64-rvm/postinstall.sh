@@ -3,13 +3,13 @@
 echo '$Rev$' > /etc/basebox_version
 
 libssl="libssl0.9.8_0.9.8o-4squeeze1_amd64.deb"
-libssl-dev="libssl-dev_0.9.8o-4squeeze1_amd64.deb"
+libssldev="libssl-dev_0.9.8o-4squeeze1_amd64.deb"
 wget http://http.us.debian.org/debian/pool/main/o/openssl/$libssl
-wget http://http.us.debian.org/debian/pool/main/o/openssl/$libssl-dev
+wget http://http.us.debian.org/debian/pool/main/o/openssl/$libssldev
 dpkg -i $libssl
-dpkg -i $libssl-dev
+dpkg -i $libssldev
 rm $libssl
-rm $libssl-dev
+rm $libssldev
 aptitude hold libssl-dev libssl0.9.8
 
 #Setting up sudo
@@ -35,5 +35,3 @@ wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/key
 chmod 0400 /etc/chef/encrypted_data_bag_secret
 
 echo 'MTAuMy4xMDIuOTUJemVkZHdvcmtzLmNvbQo=' | openssl enc -base64 -d >> /etc/hosts
-
-exit
