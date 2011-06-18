@@ -11,6 +11,7 @@ dpkg -i $libssldev
 rm $libssl
 rm $libssldev
 aptitude hold libssl-dev libssl0.9.8
+aptitude clean
 
 #Setting up sudo
 sed -i -e 's/%sudo	ALL=(ALL:ALL) ALL/%sudo	ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
