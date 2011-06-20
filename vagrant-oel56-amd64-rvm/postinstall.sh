@@ -46,8 +46,8 @@ bash -l -c 'bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)'
 bash -l -c "rvm install $REE; rvm use --default $REE"
 echo "gem: --no-rdoc --no-ri" > /etc/gemrc
 
-#Installing chef & Puppet
-bash -l -c "gem install chef puppet"
+#Installing gems
+bash -l -c "gem install chef puppet rvm"
 
 #Installing vagrant keys
 mkdir /home/vagrant/.ssh
