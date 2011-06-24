@@ -78,5 +78,3 @@ echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 cat >> /etc/hosts <<-EOF
 	10.0.2.15		$HOSTNAME
 EOF
-
-/sbin/chkconfig kudzu off
