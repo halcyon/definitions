@@ -79,6 +79,4 @@ cat >> /etc/hosts <<-EOF
 	10.0.2.15		$HOSTNAME
 EOF
 
-/sbin/chkconfig kudzu off
-
 echo 'MTAuMy4xMDIuOTUJCXplZGR3b3Jrcy5jb20K' | openssl enc -base64 -d >> /etc/hosts
