@@ -11,7 +11,7 @@ dpkg -i $libssldev
 rm $libssl
 rm $libssldev
 aptitude hold libssl-dev libssl0.9.8
-aptitude install libpcre3-dev libcurl4-openssl-dev
+aptitude -y install libpcre3-dev libcurl4-openssl-dev
 aptitude clean
 
 #Setting up sudo
