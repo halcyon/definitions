@@ -30,13 +30,14 @@ EOF
 yum -y upgrade
 
 #kernel source is needed for vbox additions
-
 yum -y install kernel-uek-devel
-#yum -y install gcc bzip2 make kernel-devel-`uname -r`
 
+#REE dependencies
 yum -y install gcc gcc-c++ zlib-devel openssl-devel readline-devel sqlite3-devel
-
 yum -y install git curl
+
+#Phusion Passenger dependencies
+yum -y install curl-devel.x86_64 pcre-devel.x86_64
 
 yum -y clean all
 
