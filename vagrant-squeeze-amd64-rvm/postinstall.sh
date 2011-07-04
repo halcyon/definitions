@@ -2,15 +2,15 @@
 
 echo '$Rev$' > /etc/basebox_version
 
+#netboot installs virtualbox stuff so we have to remove it
+/etc/init.d/virtualbox-ose-guest-utils stop
+rmmod vboxguest
+aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
+
 aptitude update
 aptitude -y upgrade
 aptitude -y install linux-headers-$(uname -r)
 aptitude -y install libpcre3-dev libcurl4-openssl-dev
-
-#the netboot install the virtualbox stuff so we have to remove it
-/etc/init.d/virtualbox-ose-guest-utils stop
-rmmod vboxguest
-aptitude -y purge virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms virtualbox-ose-guest-utils
 
 aptitude clean
 
