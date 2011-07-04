@@ -4,7 +4,7 @@ echo '$Rev$' > /etc/basebox_version
 
 aptitude update
 aptitude -y upgrade
-aptitude -y install linux-headers-2.6-amd64
+aptitude -y install linux-headers-$(uname -r)
 aptitude -y install libpcre3-dev libcurl4-openssl-dev
 
 #the netboot install the virtualbox stuff so we have to remove it
