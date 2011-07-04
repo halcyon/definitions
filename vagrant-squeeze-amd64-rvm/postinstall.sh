@@ -2,6 +2,7 @@
 
 echo '$Rev$' > /etc/basebox_version
 
+aptitude -y install linux-headers-2.6-amd64
 aptitude -y install libpcre3-dev libcurl4-openssl-dev
 
 #the netboot install the virtualbox stuff so we have to remove it
@@ -39,10 +40,10 @@ VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
 cd /tmp
 wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso
 mount -o loop VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
-yes|sh /mnt/VBoxLinuxAdditions.run
+sh /mnt/VBoxLinuxAdditions.run
 umount /mnt
-
 rm VBoxGuestAdditions_$VBOX_VERSION.iso
+
 
 # Zero out the free space to save space in the final image:
 dd if=/dev/zero of=/EMPTY bs=1M
