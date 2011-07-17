@@ -79,3 +79,7 @@ echo "HOSTNAME=$HOSTNAME" >> /etc/sysconfig/network
 cat >> /etc/hosts <<-EOF
 	10.0.2.15		$HOSTNAME
 EOF
+
+# Zero out the free space to save space in the final image:
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
