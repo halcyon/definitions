@@ -48,7 +48,7 @@ rm VBoxGuestAdditions_$VBOX_VERSION.iso
 
 
 # Zero out the free space to save space in the final image:
-dd if=/dev/zero of=/EMPTY bs=1M
+dd if=/dev/zero of=/EMPTY bs=10M
 rm -f /EMPTY
 
 # Removing leftover leases and persistent rules
